@@ -1,0 +1,99 @@
+server:
+  port: 8888
+
+management:
+  endpoints:
+    web:
+      base-path: /monitor
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: false
+
+
+info:
+  app:  aaaa
+  name: spring-boot-actuator
+  version: 1.0.0
+
+spring:
+  datasource:
+    name: mysql_test
+    master:
+      jdbcurl: jdbc:mysql://10.0.9.5:3306/axtestdb2?autoReconnect=true&characterEncoding=utf8&useUnicode=true
+      username: axtest
+      password: axtest123
+      driver-class-name: com.mysql.jdbc.Driver
+    slave:
+      url: jdbc:mysql://10.0.9.5:3306/axtestdb1?autoReconnect=true&characterEncoding=utf8&useUnicode=true
+      username: axtest
+      password: axtest123
+      driver-class-name: com.mysql.jdbc.Driver
+    read: get,select,count,list,query,find
+    write: add,create,update,delete,remove,insert
+    druid:
+      filters: stat,wall
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+  redis:
+    host: 10.0.0.60
+    port: 6379
+    password: crs-k20t9f8c:1234567a
+    database: 1     # Redis默认情况下有16个分片，这里配置具体使用的分片
+#    lettuce:
+#      pool:
+#        max-active: 8        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+#        max-wait: -1s        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+#        max-idle: 8          # 连接池中的最大空闲连接 默认 8
+#        min-idle: 0          # 连接池中的最小空闲连接 默认 0
+    timeout: 10000s   # Redis默认情况下有16个分片，这里配置具体使用的分片
+    jedis:
+      pool:
+        max-active: 8        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-wait: -1s        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-idle: 8          # 连接池中的最大空闲连接 默认 8
+        min-idle: 0          # 连接池中的最小空闲连接 默认 0
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        concurrency: 2                #最小消息监听线程数
+        max-concurrency: 2            #最大消息监听线程数
+    virtual-host: /
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.carter.sbdemo.model
+
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
+  reasonable: true
+  params: count=countSql
+  returnPageInfo: check
+
+logging:
+  config: classpath:logback-spring.xml
+  path: D:\springboot\demo\logs
+
+

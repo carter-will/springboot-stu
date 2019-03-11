@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carter.sbdemo.dao.TblChannelConfigDTOMapper">
+  <resultMap id="BaseResultMap" type="com.carter.sbdemo.model.TblChannelConfigDTO">
+    <id column="SLS_KEY" jdbcType="VARCHAR" property="slsKey" />
+    <result column="CHANNEL_CODE" jdbcType="VARCHAR" property="channelCode" />
+    <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="OUT_CODE" jdbcType="VARCHAR" property="outCode" />
+    <result column="CHAIN_CODE" jdbcType="VARCHAR" property="chainCode" />
+    <result column="PRODUCT_NAME" jdbcType="VARCHAR" property="productName" />
+    <result column="ELECPOLICY_MODELNO" jdbcType="VARCHAR" property="elecpolicyModelno" />
+    <result column="C_STATUS" jdbcType="CHAR" property="cStatus" />
+    <result column="C_DATA_SRC" jdbcType="VARCHAR" property="cDataSrc" />
+    <result column="C_PROVINCE" jdbcType="VARCHAR" property="cProvince" />
+    <result column="C_CITY" jdbcType="VARCHAR" property="cCity" />
+    <result column="C_COUNTY" jdbcType="VARCHAR" property="cCounty" />
+    <result column="C_OPR_CDE" jdbcType="VARCHAR" property="cOprCde" />
+    <result column="C_OPR_NME" jdbcType="VARCHAR" property="cOprNme" />
+    <result column="C_FEE_PROP" jdbcType="VARCHAR" property="cFeeProp" />
+    <result column="C_BRK_SLS_CDE" jdbcType="VARCHAR" property="cBrkSlsCde" />
+    <result column="C_PAY_TYP" jdbcType="VARCHAR" property="cPayTyp" />
+    <result column="C_CONFIG_STATS" jdbcType="VARCHAR" property="cConfigStats" />
+    <result column="C_PAPER_MRK" jdbcType="VARCHAR" property="cPaperMrk" />
+    <result column="C_SEND_PER" jdbcType="VARCHAR" property="cSendPer" />
+    <result column="C_SEND_MOBLE" jdbcType="VARCHAR" property="cSendMoble" />
+    <result column="C_SEND_ADDR" jdbcType="VARCHAR" property="cSendAddr" />
+    <result column="C_CARD_NO" jdbcType="VARCHAR" property="cCardNo" />
+    <result column="VCH_INFO" jdbcType="VARCHAR" property="vchInfo" />
+    <result column="C_PRE_NO" jdbcType="VARCHAR" property="cPreNo" />
+    <result column="CHANNEL_TYPE" jdbcType="VARCHAR" property="channelType" />
+    <result column="CHANNEL_URL" jdbcType="VARCHAR" property="channelUrl" />
+    <result column="CHANNEL_SIGN" jdbcType="VARCHAR" property="channelSign" />
+    <result column="C_FIN_TYP" jdbcType="VARCHAR" property="cFinTyp" />
+    <result column="C_SLS_CDE" jdbcType="VARCHAR" property="cSlsCde" />
+    <result column="IN_CODE" jdbcType="VARCHAR" property="inCode" />
+    <result column="T_MODIFY_TM" jdbcType="TIMESTAMP" property="tModifyTm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SLS_KEY, CHANNEL_CODE, PRODUCT_CODE, OUT_CODE, CHAIN_CODE, PRODUCT_NAME, ELECPOLICY_MODELNO, 
+    C_STATUS, C_DATA_SRC, C_PROVINCE, C_CITY, C_COUNTY, C_OPR_CDE, C_OPR_NME, C_FEE_PROP, 
+    C_BRK_SLS_CDE, C_PAY_TYP, C_CONFIG_STATS, C_PAPER_MRK, C_SEND_PER, C_SEND_MOBLE, 
+    C_SEND_ADDR, C_CARD_NO, VCH_INFO, C_PRE_NO, CHANNEL_TYPE, CHANNEL_URL, CHANNEL_SIGN, 
+    C_FIN_TYP, C_SLS_CDE, IN_CODE, T_MODIFY_TM
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_channel_config
+    where SLS_KEY = #{slsKey,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_channel_config
+    where SLS_KEY = #{slsKey,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.carter.sbdemo.model.TblChannelConfigDTO">
+    insert into tbl_channel_config (SLS_KEY, CHANNEL_CODE, PRODUCT_CODE, 
+      OUT_CODE, CHAIN_CODE, PRODUCT_NAME, 
+      ELECPOLICY_MODELNO, C_STATUS, C_DATA_SRC, 
+      C_PROVINCE, C_CITY, C_COUNTY, 
+      C_OPR_CDE, C_OPR_NME, C_FEE_PROP, 
+      C_BRK_SLS_CDE, C_PAY_TYP, C_CONFIG_STATS, 
+      C_PAPER_MRK, C_SEND_PER, C_SEND_MOBLE, 
+      C_SEND_ADDR, C_CARD_NO, VCH_INFO, 
+      C_PRE_NO, CHANNEL_TYPE, CHANNEL_URL, 
+      CHANNEL_SIGN, C_FIN_TYP, C_SLS_CDE, 
+      IN_CODE, T_MODIFY_TM)
+    values (#{slsKey,jdbcType=VARCHAR}, #{channelCode,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, 
+      #{outCode,jdbcType=VARCHAR}, #{chainCode,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{elecpolicyModelno,jdbcType=VARCHAR}, #{cStatus,jdbcType=CHAR}, #{cDataSrc,jdbcType=VARCHAR}, 
+      #{cProvince,jdbcType=VARCHAR}, #{cCity,jdbcType=VARCHAR}, #{cCounty,jdbcType=VARCHAR}, 
+      #{cOprCde,jdbcType=VARCHAR}, #{cOprNme,jdbcType=VARCHAR}, #{cFeeProp,jdbcType=VARCHAR}, 
+      #{cBrkSlsCde,jdbcType=VARCHAR}, #{cPayTyp,jdbcType=VARCHAR}, #{cConfigStats,jdbcType=VARCHAR}, 
+      #{cPaperMrk,jdbcType=VARCHAR}, #{cSendPer,jdbcType=VARCHAR}, #{cSendMoble,jdbcType=VARCHAR}, 
+      #{cSendAddr,jdbcType=VARCHAR}, #{cCardNo,jdbcType=VARCHAR}, #{vchInfo,jdbcType=VARCHAR}, 
+      #{cPreNo,jdbcType=VARCHAR}, #{channelType,jdbcType=VARCHAR}, #{channelUrl,jdbcType=VARCHAR}, 
+      #{channelSign,jdbcType=VARCHAR}, #{cFinTyp,jdbcType=VARCHAR}, #{cSlsCde,jdbcType=VARCHAR}, 
+      #{inCode,jdbcType=VARCHAR}, #{tModifyTm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.carter.sbdemo.model.TblChannelConfigDTO">
+    insert into tbl_channel_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="slsKey != null">
+        SLS_KEY,
+      </if>
+      <if test="channelCode != null">
+        CHANNEL_CODE,
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE,
+      </if>
+      <if test="outCode != null">
+        OUT_CODE,
+      </if>
+      <if test="chainCode != null">
+        CHAIN_CODE,
+      </if>
+      <if test="productName != null">
+        PRODUCT_NAME,
+      </if>
+      <if test="elecpolicyModelno != null">
+        ELECPOLICY_MODELNO,
+      </if>
+      <if test="cStatus != null">
+        C_STATUS,
+      </if>
+      <if test="cDataSrc != null">
+        C_DATA_SRC,
+      </if>
+      <if test="cProvince != null">
+        C_PROVINCE,
+      </if>
+      <if test="cCity != null">
+        C_CITY,
+      </if>
+      <if test="cCounty != null">
+        C_COUNTY,
+      </if>
+      <if test="cOprCde != null">
+        C_OPR_CDE,
+      </if>
+      <if test="cOprNme != null">
+        C_OPR_NME,
+      </if>
+      <if test="cFeeProp != null">
+        C_FEE_PROP,
+      </if>
+      <if test="cBrkSlsCde != null">
+        C_BRK_SLS_CDE,
+      </if>
+      <if test="cPayTyp != null">
+        C_PAY_TYP,
+      </if>
+      <if test="cConfigStats != null">
+        C_CONFIG_STATS,
+      </if>
+      <if test="cPaperMrk != null">
+        C_PAPER_MRK,
+      </if>
+      <if test="cSendPer != null">
+        C_SEND_PER,
+      </if>
+      <if test="cSendMoble != null">
+        C_SEND_MOBLE,
+      </if>
+      <if test="cSendAddr != null">
+        C_SEND_ADDR,
+      </if>
+      <if test="cCardNo != null">
+        C_CARD_NO,
+      </if>
+      <if test="vchInfo != null">
+        VCH_INFO,
+      </if>
+      <if test="cPreNo != null">
+        C_PRE_NO,
+      </if>
+      <if test="channelType != null">
+        CHANNEL_TYPE,
+      </if>
+      <if test="channelUrl != null">
+        CHANNEL_URL,
+      </if>
+      <if test="channelSign != null">
+        CHANNEL_SIGN,
+      </if>
+      <if test="cFinTyp != null">
+        C_FIN_TYP,
+      </if>
+      <if test="cSlsCde != null">
+        C_SLS_CDE,
+      </if>
+      <if test="inCode != null">
+        IN_CODE,
+      </if>
+      <if test="tModifyTm != null">
+        T_MODIFY_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="slsKey != null">
+        #{slsKey,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCode != null">
+        #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="outCode != null">
+        #{outCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chainCode != null">
+        #{chainCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="elecpolicyModelno != null">
+        #{elecpolicyModelno,jdbcType=VARCHAR},
+      </if>
+      <if test="cStatus != null">
+        #{cStatus,jdbcType=CHAR},
+      </if>
+      <if test="cDataSrc != null">
+        #{cDataSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="cProvince != null">
+        #{cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="cCity != null">
+        #{cCity,jdbcType=VARCHAR},
+      </if>
+      <if test="cCounty != null">
+        #{cCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="cOprCde != null">
+        #{cOprCde,jdbcType=VARCHAR},
+      </if>
+      <if test="cOprNme != null">
+        #{cOprNme,jdbcType=VARCHAR},
+      </if>
+      <if test="cFeeProp != null">
+        #{cFeeProp,jdbcType=VARCHAR},
+      </if>
+      <if test="cBrkSlsCde != null">
+        #{cBrkSlsCde,jdbcType=VARCHAR},
+      </if>
+      <if test="cPayTyp != null">
+        #{cPayTyp,jdbcType=VARCHAR},
+      </if>
+      <if test="cConfigStats != null">
+        #{cConfigStats,jdbcType=VARCHAR},
+      </if>
+      <if test="cPaperMrk != null">
+        #{cPaperMrk,jdbcType=VARCHAR},
+      </if>
+      <if test="cSendPer != null">
+        #{cSendPer,jdbcType=VARCHAR},
+      </if>
+      <if test="cSendMoble != null">
+        #{cSendMoble,jdbcType=VARCHAR},
+      </if>
+      <if test="cSendAddr != null">
+        #{cSendAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cCardNo != null">
+        #{cCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vchInfo != null">
+        #{vchInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cPreNo != null">
+        #{cPreNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelType != null">
+        #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="channelUrl != null">
+        #{channelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSign != null">
+        #{channelSign,jdbcType=VARCHAR},
+      </if>
+      <if test="cFinTyp != null">
+        #{cFinTyp,jdbcType=VARCHAR},
+      </if>
+      <if test="cSlsCde != null">
+        #{cSlsCde,jdbcType=VARCHAR},
+      </if>
+      <if test="inCode != null">
+        #{inCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tModifyTm != null">
+        #{tModifyTm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.carter.sbdemo.model.TblChannelConfigDTO">
+    update tbl_channel_config
+    <set>
+      <if test="channelCode != null">
+        CHANNEL_CODE = #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="outCode != null">
+        OUT_CODE = #{outCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chainCode != null">
+        CHAIN_CODE = #{chainCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="elecpolicyModelno != null">
+        ELECPOLICY_MODELNO = #{elecpolicyModelno,jdbcType=VARCHAR},
+      </if>
+      <if test="cStatus != null">
+        C_STATUS = #{cStatus,jdbcType=CHAR},
+      </if>
+      <if test="cDataSrc != null">
+        C_DATA_SRC = #{cDataSrc,jdbcType=VARCHAR},
+      </if>
+      <if test="cProvince != null">
+        C_PROVINCE = #{cProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="cCity != null">
+        C_CITY = #{cCity,jdbcType=VARCHAR},
+      </if>
+      <if test="cCounty != null">
+        C_COUNTY = #{cCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="cOprCde != null">
+        C_OPR_CDE = #{cOprCde,jdbcType=VARCHAR},
+      </if>
+      <if test="cOprNme != null">
+        C_OPR_NME = #{cOprNme,jdbcType=VARCHAR},
+      </if>
+      <if test="cFeeProp != null">
+        C_FEE_PROP = #{cFeeProp,jdbcType=VARCHAR},
+      </if>
+      <if test="cBrkSlsCde != null">
+        C_BRK_SLS_CDE = #{cBrkSlsCde,jdbcType=VARCHAR},
+      </if>
+      <if test="cPayTyp != null">
+        C_PAY_TYP = #{cPayTyp,jdbcType=VARCHAR},
+      </if>
+      <if test="cConfigStats != null">
+        C_CONFIG_STATS = #{cConfigStats,jdbcType=VARCHAR},
+      </if>
+      <if test="cPaperMrk != null">
+        C_PAPER_MRK = #{cPaperMrk,jdbcType=VARCHAR},
+      </if>
+      <if test="cSendPer != null">
+        C_SEND_PER = #{cSendPer,jdbcType=VARCHAR},
+      </if>
+      <if test="cSendMoble != null">
+        C_SEND_MOBLE = #{cSendMoble,jdbcType=VARCHAR},
+      </if>
+      <if test="cSendAddr != null">
+        C_SEND_ADDR = #{cSendAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cCardNo != null">
+        C_CARD_NO = #{cCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vchInfo != null">
+        VCH_INFO = #{vchInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cPreNo != null">
+        C_PRE_NO = #{cPreNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelType != null">
+        CHANNEL_TYPE = #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="channelUrl != null">
+        CHANNEL_URL = #{channelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSign != null">
+        CHANNEL_SIGN = #{channelSign,jdbcType=VARCHAR},
+      </if>
+      <if test="cFinTyp != null">
+        C_FIN_TYP = #{cFinTyp,jdbcType=VARCHAR},
+      </if>
+      <if test="cSlsCde != null">
+        C_SLS_CDE = #{cSlsCde,jdbcType=VARCHAR},
+      </if>
+      <if test="inCode != null">
+        IN_CODE = #{inCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tModifyTm != null">
+        T_MODIFY_TM = #{tModifyTm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SLS_KEY = #{slsKey,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.carter.sbdemo.model.TblChannelConfigDTO">
+    update tbl_channel_config
+    set CHANNEL_CODE = #{channelCode,jdbcType=VARCHAR},
+      PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      OUT_CODE = #{outCode,jdbcType=VARCHAR},
+      CHAIN_CODE = #{chainCode,jdbcType=VARCHAR},
+      PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      ELECPOLICY_MODELNO = #{elecpolicyModelno,jdbcType=VARCHAR},
+      C_STATUS = #{cStatus,jdbcType=CHAR},
+      C_DATA_SRC = #{cDataSrc,jdbcType=VARCHAR},
+      C_PROVINCE = #{cProvince,jdbcType=VARCHAR},
+      C_CITY = #{cCity,jdbcType=VARCHAR},
+      C_COUNTY = #{cCounty,jdbcType=VARCHAR},
+      C_OPR_CDE = #{cOprCde,jdbcType=VARCHAR},
+      C_OPR_NME = #{cOprNme,jdbcType=VARCHAR},
+      C_FEE_PROP = #{cFeeProp,jdbcType=VARCHAR},
+      C_BRK_SLS_CDE = #{cBrkSlsCde,jdbcType=VARCHAR},
+      C_PAY_TYP = #{cPayTyp,jdbcType=VARCHAR},
+      C_CONFIG_STATS = #{cConfigStats,jdbcType=VARCHAR},
+      C_PAPER_MRK = #{cPaperMrk,jdbcType=VARCHAR},
+      C_SEND_PER = #{cSendPer,jdbcType=VARCHAR},
+      C_SEND_MOBLE = #{cSendMoble,jdbcType=VARCHAR},
+      C_SEND_ADDR = #{cSendAddr,jdbcType=VARCHAR},
+      C_CARD_NO = #{cCardNo,jdbcType=VARCHAR},
+      VCH_INFO = #{vchInfo,jdbcType=VARCHAR},
+      C_PRE_NO = #{cPreNo,jdbcType=VARCHAR},
+      CHANNEL_TYPE = #{channelType,jdbcType=VARCHAR},
+      CHANNEL_URL = #{channelUrl,jdbcType=VARCHAR},
+      CHANNEL_SIGN = #{channelSign,jdbcType=VARCHAR},
+      C_FIN_TYP = #{cFinTyp,jdbcType=VARCHAR},
+      C_SLS_CDE = #{cSlsCde,jdbcType=VARCHAR},
+      IN_CODE = #{inCode,jdbcType=VARCHAR},
+      T_MODIFY_TM = #{tModifyTm,jdbcType=TIMESTAMP}
+    where SLS_KEY = #{slsKey,jdbcType=VARCHAR}
+  </update>
+
+  <delete id="deleteByUnionKey">
+    delete from tbl_channel_config
+    where CHANNEL_CODE = #{comid,jdbcType=VARCHAR}
+    and  PRODUCT_CODE = #{productNo,jdbcType=VARCHAR}
+    and CHAIN_CODE = #{chainCde,jdbcType=VARCHAR}
+  </delete>
+</mapper>

@@ -1,0 +1,9 @@
+备注：
+
+Actuator的api接口
+http://localhost:8888/monitor/    查看所有支持的端点
+官方文档
+https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
+
+
+admin监控

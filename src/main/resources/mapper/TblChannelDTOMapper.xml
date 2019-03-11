@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carter.sbdemo.dao.TblChannelDTOMapper">
+  <resultMap id="BaseResultMap" type="com.carter.sbdemo.model.TblChannelDTO">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="CHANNEL_COOPERATION_ID" jdbcType="CHAR" property="channelCooperationId" />
+    <result column="PARENT" jdbcType="CHAR" property="parent" />
+    <result column="CHLEVEL" jdbcType="DECIMAL" property="chlevel" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="COMID" jdbcType="VARCHAR" property="comid" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="COMPANY_NAME" jdbcType="VARCHAR" property="companyName" />
+    <result column="LEADER" jdbcType="VARCHAR" property="leader" />
+    <result column="SECRETKEY" jdbcType="VARCHAR" property="secretkey" />
+    <result column="IS_AUTO" jdbcType="CHAR" property="isAuto" />
+    <result column="ON_DATE" jdbcType="DATE" property="onDate" />
+    <result column="OFF_DATE" jdbcType="DATE" property="offDate" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="BANK_B" jdbcType="VARCHAR" property="bankB" />
+    <result column="ACCOUNT_NAME_B" jdbcType="VARCHAR" property="accountNameB" />
+    <result column="ACCOUNT_CODE_B" jdbcType="VARCHAR" property="accountCodeB" />
+    <result column="SIGN_DATE" jdbcType="DATE" property="signDate" />
+    <result column="BANK_A" jdbcType="VARCHAR" property="bankA" />
+    <result column="ACCOUNT_NAME_A" jdbcType="VARCHAR" property="accountNameA" />
+    <result column="ACCOUNT_CODE_A" jdbcType="VARCHAR" property="accountCodeA" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="OPERATOR_ID" jdbcType="CHAR" property="operatorId" />
+    <result column="OPERATOR_NAME" jdbcType="VARCHAR" property="operatorName" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="OPERATOR_TIME" jdbcType="DATE" property="operatorTime" />
+    <result column="LEVEL" jdbcType="DECIMAL" property="level" />
+    <result column="IS_AES" jdbcType="CHAR" property="isAes" />
+    <result column="T_MODIFY_TM" jdbcType="TIMESTAMP" property="tModifyTm" />
+    <result column="CERT_TYPE" jdbcType="VARCHAR" property="certType" />
+    <result column="CERT_CODE" jdbcType="VARCHAR" property="certCode" />
+    <result column="SYNC_STATE" jdbcType="CHAR" property="syncState" />
+    <result column="RECORD_NO" jdbcType="VARCHAR" property="recordNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CHANNEL_COOPERATION_ID, PARENT, CHLEVEL, TYPE, COMID, NAME, COMPANY_NAME, LEADER, 
+    SECRETKEY, IS_AUTO, ON_DATE, OFF_DATE, DESCRIPTION, BANK_B, ACCOUNT_NAME_B, ACCOUNT_CODE_B, 
+    SIGN_DATE, BANK_A, ACCOUNT_NAME_A, ACCOUNT_CODE_A, STATUS, OPERATOR_ID, OPERATOR_NAME, 
+    CREATE_TIME, OPERATOR_TIME, LEVEL, IS_AES, T_MODIFY_TM, CERT_TYPE, CERT_CODE, SYNC_STATE, 
+    RECORD_NO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_channel
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_channel
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.carter.sbdemo.model.TblChannelDTO">
+    insert into tbl_channel (ID, CHANNEL_COOPERATION_ID, PARENT, 
+      CHLEVEL, TYPE, COMID, 
+      NAME, COMPANY_NAME, LEADER, 
+      SECRETKEY, IS_AUTO, ON_DATE, 
+      OFF_DATE, DESCRIPTION, BANK_B, 
+      ACCOUNT_NAME_B, ACCOUNT_CODE_B, SIGN_DATE, 
+      BANK_A, ACCOUNT_NAME_A, ACCOUNT_CODE_A, 
+      STATUS, OPERATOR_ID, OPERATOR_NAME, 
+      CREATE_TIME, OPERATOR_TIME, LEVEL, 
+      IS_AES, T_MODIFY_TM, CERT_TYPE, 
+      CERT_CODE, SYNC_STATE, RECORD_NO
+      )
+    values (#{id,jdbcType=CHAR}, #{channelCooperationId,jdbcType=CHAR}, #{parent,jdbcType=CHAR}, 
+      #{chlevel,jdbcType=DECIMAL}, #{type,jdbcType=VARCHAR}, #{comid,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, 
+      #{secretkey,jdbcType=VARCHAR}, #{isAuto,jdbcType=CHAR}, #{onDate,jdbcType=DATE}, 
+      #{offDate,jdbcType=DATE}, #{description,jdbcType=VARCHAR}, #{bankB,jdbcType=VARCHAR}, 
+      #{accountNameB,jdbcType=VARCHAR}, #{accountCodeB,jdbcType=VARCHAR}, #{signDate,jdbcType=DATE}, 
+      #{bankA,jdbcType=VARCHAR}, #{accountNameA,jdbcType=VARCHAR}, #{accountCodeA,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{operatorId,jdbcType=CHAR}, #{operatorName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{operatorTime,jdbcType=DATE}, #{level,jdbcType=DECIMAL}, 
+      #{isAes,jdbcType=CHAR}, #{tModifyTm,jdbcType=TIMESTAMP}, #{certType,jdbcType=VARCHAR}, 
+      #{certCode,jdbcType=VARCHAR}, #{syncState,jdbcType=CHAR}, #{recordNo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.carter.sbdemo.model.TblChannelDTO">
+    insert into tbl_channel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="channelCooperationId != null">
+        CHANNEL_COOPERATION_ID,
+      </if>
+      <if test="parent != null">
+        PARENT,
+      </if>
+      <if test="chlevel != null">
+        CHLEVEL,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="comid != null">
+        COMID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="companyName != null">
+        COMPANY_NAME,
+      </if>
+      <if test="leader != null">
+        LEADER,
+      </if>
+      <if test="secretkey != null">
+        SECRETKEY,
+      </if>
+      <if test="isAuto != null">
+        IS_AUTO,
+      </if>
+      <if test="onDate != null">
+        ON_DATE,
+      </if>
+      <if test="offDate != null">
+        OFF_DATE,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="bankB != null">
+        BANK_B,
+      </if>
+      <if test="accountNameB != null">
+        ACCOUNT_NAME_B,
+      </if>
+      <if test="accountCodeB != null">
+        ACCOUNT_CODE_B,
+      </if>
+      <if test="signDate != null">
+        SIGN_DATE,
+      </if>
+      <if test="bankA != null">
+        BANK_A,
+      </if>
+      <if test="accountNameA != null">
+        ACCOUNT_NAME_A,
+      </if>
+      <if test="accountCodeA != null">
+        ACCOUNT_CODE_A,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID,
+      </if>
+      <if test="operatorName != null">
+        OPERATOR_NAME,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="operatorTime != null">
+        OPERATOR_TIME,
+      </if>
+      <if test="level != null">
+        LEVEL,
+      </if>
+      <if test="isAes != null">
+        IS_AES,
+      </if>
+      <if test="tModifyTm != null">
+        T_MODIFY_TM,
+      </if>
+      <if test="certType != null">
+        CERT_TYPE,
+      </if>
+      <if test="certCode != null">
+        CERT_CODE,
+      </if>
+      <if test="syncState != null">
+        SYNC_STATE,
+      </if>
+      <if test="recordNo != null">
+        RECORD_NO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="channelCooperationId != null">
+        #{channelCooperationId,jdbcType=CHAR},
+      </if>
+      <if test="parent != null">
+        #{parent,jdbcType=CHAR},
+      </if>
+      <if test="chlevel != null">
+        #{chlevel,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="comid != null">
+        #{comid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null">
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null">
+        #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAuto != null">
+        #{isAuto,jdbcType=CHAR},
+      </if>
+      <if test="onDate != null">
+        #{onDate,jdbcType=DATE},
+      </if>
+      <if test="offDate != null">
+        #{offDate,jdbcType=DATE},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="bankB != null">
+        #{bankB,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNameB != null">
+        #{accountNameB,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCodeB != null">
+        #{accountCodeB,jdbcType=VARCHAR},
+      </if>
+      <if test="signDate != null">
+        #{signDate,jdbcType=DATE},
+      </if>
+      <if test="bankA != null">
+        #{bankA,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNameA != null">
+        #{accountNameA,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCodeA != null">
+        #{accountCodeA,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=CHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="operatorTime != null">
+        #{operatorTime,jdbcType=DATE},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=DECIMAL},
+      </if>
+      <if test="isAes != null">
+        #{isAes,jdbcType=CHAR},
+      </if>
+      <if test="tModifyTm != null">
+        #{tModifyTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certType != null">
+        #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certCode != null">
+        #{certCode,jdbcType=VARCHAR},
+      </if>
+      <if test="syncState != null">
+        #{syncState,jdbcType=CHAR},
+      </if>
+      <if test="recordNo != null">
+        #{recordNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.carter.sbdemo.model.TblChannelDTO">
+    update tbl_channel
+    <set>
+      <if test="channelCooperationId != null">
+        CHANNEL_COOPERATION_ID = #{channelCooperationId,jdbcType=CHAR},
+      </if>
+      <if test="parent != null">
+        PARENT = #{parent,jdbcType=CHAR},
+      </if>
+      <if test="chlevel != null">
+        CHLEVEL = #{chlevel,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="comid != null">
+        COMID = #{comid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null">
+        LEADER = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null">
+        SECRETKEY = #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAuto != null">
+        IS_AUTO = #{isAuto,jdbcType=CHAR},
+      </if>
+      <if test="onDate != null">
+        ON_DATE = #{onDate,jdbcType=DATE},
+      </if>
+      <if test="offDate != null">
+        OFF_DATE = #{offDate,jdbcType=DATE},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="bankB != null">
+        BANK_B = #{bankB,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNameB != null">
+        ACCOUNT_NAME_B = #{accountNameB,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCodeB != null">
+        ACCOUNT_CODE_B = #{accountCodeB,jdbcType=VARCHAR},
+      </if>
+      <if test="signDate != null">
+        SIGN_DATE = #{signDate,jdbcType=DATE},
+      </if>
+      <if test="bankA != null">
+        BANK_A = #{bankA,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNameA != null">
+        ACCOUNT_NAME_A = #{accountNameA,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCodeA != null">
+        ACCOUNT_CODE_A = #{accountCodeA,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID = #{operatorId,jdbcType=CHAR},
+      </if>
+      <if test="operatorName != null">
+        OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="operatorTime != null">
+        OPERATOR_TIME = #{operatorTime,jdbcType=DATE},
+      </if>
+      <if test="level != null">
+        LEVEL = #{level,jdbcType=DECIMAL},
+      </if>
+      <if test="isAes != null">
+        IS_AES = #{isAes,jdbcType=CHAR},
+      </if>
+      <if test="tModifyTm != null">
+        T_MODIFY_TM = #{tModifyTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="certType != null">
+        CERT_TYPE = #{certType,jdbcType=VARCHAR},
+      </if>
+      <if test="certCode != null">
+        CERT_CODE = #{certCode,jdbcType=VARCHAR},
+      </if>
+      <if test="syncState != null">
+        SYNC_STATE = #{syncState,jdbcType=CHAR},
+      </if>
+      <if test="recordNo != null">
+        RECORD_NO = #{recordNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.carter.sbdemo.model.TblChannelDTO">
+    update tbl_channel
+    set CHANNEL_COOPERATION_ID = #{channelCooperationId,jdbcType=CHAR},
+      PARENT = #{parent,jdbcType=CHAR},
+      CHLEVEL = #{chlevel,jdbcType=DECIMAL},
+      TYPE = #{type,jdbcType=VARCHAR},
+      COMID = #{comid,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      LEADER = #{leader,jdbcType=VARCHAR},
+      SECRETKEY = #{secretkey,jdbcType=VARCHAR},
+      IS_AUTO = #{isAuto,jdbcType=CHAR},
+      ON_DATE = #{onDate,jdbcType=DATE},
+      OFF_DATE = #{offDate,jdbcType=DATE},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      BANK_B = #{bankB,jdbcType=VARCHAR},
+      ACCOUNT_NAME_B = #{accountNameB,jdbcType=VARCHAR},
+      ACCOUNT_CODE_B = #{accountCodeB,jdbcType=VARCHAR},
+      SIGN_DATE = #{signDate,jdbcType=DATE},
+      BANK_A = #{bankA,jdbcType=VARCHAR},
+      ACCOUNT_NAME_A = #{accountNameA,jdbcType=VARCHAR},
+      ACCOUNT_CODE_A = #{accountCodeA,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=CHAR},
+      OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      OPERATOR_TIME = #{operatorTime,jdbcType=DATE},
+      LEVEL = #{level,jdbcType=DECIMAL},
+      IS_AES = #{isAes,jdbcType=CHAR},
+      T_MODIFY_TM = #{tModifyTm,jdbcType=TIMESTAMP},
+      CERT_TYPE = #{certType,jdbcType=VARCHAR},
+      CERT_CODE = #{certCode,jdbcType=VARCHAR},
+      SYNC_STATE = #{syncState,jdbcType=CHAR},
+      RECORD_NO = #{recordNo,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+
+
+  <select id="selectChannel" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tbl_channel
+  </select>
+
+  <select id="selectByComid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tbl_channel
+    where COMID = #{comid,jdbcType=CHAR}
+  </select>
+
+  <delete id="deleteByComid" parameterType="java.lang.String">
+    delete from tbl_channel
+    where COMID = #{comid,jdbcType=CHAR}
+  </delete>
+
+
+</mapper>
